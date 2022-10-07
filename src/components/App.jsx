@@ -17,7 +17,12 @@ class App extends React.Component {
   }
 
   handleContactForm = (data) => {
-    this.state.contacts.some(contact => contact.name === data.name) ? alert(`${data.name} is alredy in contacts`) : this.setState(prevState => ({ contacts: [...prevState.contacts, data]}))
+    const isContactExist = this.state.contacts.some(contact => contact.name === data.name);
+    if (isContactExist) {
+      alert(`${data.name} is alredy in contacts`)
+    } else {
+      this.setState(prevState => ({ contacts: [...prevState.contacts, data]}))
+    }
   }
 
   handleFilter = (e) => {
